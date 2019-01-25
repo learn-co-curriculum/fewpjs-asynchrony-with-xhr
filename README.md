@@ -164,6 +164,7 @@ A slightly more interesting `load` callback might do something like
     .slice(0,3) // Take the first three names from the result array
     .forEach( name => document.write(name)) // Write those names to the document
 }
+```
 
 Final product:
 
