@@ -124,7 +124,7 @@ my_data_fetcher.addEventListener("error", ev => {
 ## Putting it All Together
 
 Let's put our code together and, at long last, invoke `send()` on
-`my_data_fetcher`. We'll also add a few console.log()` statements so that we
+`my_data_fetcher`. We'll also add a few `console.log()` statements so that we
 can see how synchronous code will continue executing _while_ our buddy,
 `my_data_fetcher` is off talking to a remote computer on the internet.
 
