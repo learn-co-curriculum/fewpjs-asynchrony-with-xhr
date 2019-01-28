@@ -2,7 +2,7 @@
 
 ## Learning Goals
 
-* Identify XMLHttpRequest as a means for asynchronous data fetch in JavaScript
+* Identify `XMLHttpRequest` as a means for asynchronous data fetch in JavaScript
 * Create an instance of the XHR class
 * Configure the destination for an XHR instance's data fetch
 * Configure a success handler on an XHR instance
@@ -34,7 +34,7 @@ Your code assistant in making asynchronous calls to remote servers for data is
 # Instantiate an XHR Instance
 
 To create a new helper, we're going to create a new _instance_ of the XHR
-_object_. We do this by invoking the new keyword on the name of the class.
+_object_. We do this by invoking the `new` keyword on the name of the class.
 Recall, the _class_ acts like a blueprint for creating multiple _instances_ of
 that class. The classic example is that there is a single blueprint for a `Dog`
 but there are a wondrous variety of instances of that "blueprint."
@@ -49,7 +49,7 @@ This will create an XHR instance called `my_data_fetcher`.
 
 In order to retrieve data, our little buddy, `my_data_fetcher`, needs to know
 where to search for information. We communicate that thorough the `open`
-attribute on the XHR instance.
+method on the XHR instance.
 
 ```js
 
@@ -69,7 +69,7 @@ page.
 
 It's very important to note **no work is being done yet.** The name `open()` is
 slightly misleading. It does not mean "open a connection". It's more like,
-"When we invoke `send()`, our last step as you'll see later), this is where you
+"When we invoke `send()`, our last step (as you'll see later), this is where you
 should go."
 
 Before we trigger the real work by invoking `my_data_fetcher.send()`, we need
@@ -101,7 +101,7 @@ my_data_fetcher.addEventListener("load", e => {
 ```
 
 The callback, the function that's the second argument to `addEventListener()`,
-takes a single argument an instance of the `load` `Event` object . We can
+takes a single argument: an instance of a `load` `Event` object . We can
 `console.log` it if we want to inspect it more. When the `load` event fires,
 the original XHR instance, `my_data_fetcher`, will have the server's response
 stored in its `.response` attribute. When we `console.log()` the `.response`
