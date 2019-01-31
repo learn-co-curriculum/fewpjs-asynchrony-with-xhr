@@ -2,24 +2,27 @@
 
 ## Learning Goals
 
-* Identify `XMLHttpRequest` as a means for asynchronous data fetch in JavaScript
-* Create an instance of the XHR class
-* Configure the destination for an XHR instance's data fetch
-* Configure a success handler on an XHR instance
-* Configure a error handler on an XHR instance
-* Request remote data using a configured XHR instance
+- Identify `XMLHttpRequest` as a means for asynchronous data fetch in JavaScript
+- Create an instance of the XHR class
+- Configure the destination for an XHR instance's data fetch
+- Configure a success handler on an XHR instance
+- Configure a error handler on an XHR instance
+- Request remote data using a configured XHR instance
 
 Asynchrony feels unusual when programming because we're so used to programming
 in languages that are synchronous: they run like they read, top down, left to
 right, maybe a loop here or there, down into a function, back out from the
-function, etc.
+function, etc...
 
 But in our day-to-day lives, we _love_ asynchrony.
 
-* Pop some microwave popcorn in the microwave, then wander to put a DVD in the DVD-player: **asynchrony**
-* Send one project team member out for coffee while the other team-members keep working: **asynchrony**
-* Send a text message and then browse social media until you get an alert saying that you have a response: **asynchrony**
-* Text while driving...no, never do that.
+- Pop some microwave popcorn in the microwave, then wander to put a DVD in the
+  DVD-player: **asynchrony**
+- Send one project team member out for coffee while the other team-members keep
+  working: **asynchrony**
+- Send a text message and then browse social media until you get an alert saying
+  that you have a response: **asynchrony**
+- Text while driving...no, never do that.
 
 Asynchrony is really just a programmer word for the idea of "multi-tasking."
 While the code might look a little bit strange, it should feel like a modest
@@ -28,7 +31,7 @@ stretch from your fundamentals in event-based JavaScript programming.
 Your code assistant in making asynchronous calls to remote servers for data is
 (the long-named) `XMLHttpRequest`, or XHR object.
 
-> *ASIDE*: It can retrieve other things besides XML. These days, it mostly
+> _ASIDE_: It can retrieve other things besides XML. These days, it mostly
 > retrieves JSON.
 
 # Instantiate an XHR Instance
@@ -48,13 +51,12 @@ This will create an XHR instance called `my_data_fetcher`.
 ## Direct an XHR Instance's Request
 
 In order to retrieve data, our little buddy, `my_data_fetcher`, needs to know
-where to search for information. We communicate that thorough the `open`
+where to search for information. We communicate that through the `open`
 method on the XHR instance.
 
 ```js
-
 // my_data_fetcher.open(HTTP_VERB, URL);
-my_data_fetcher.open("GET", "http://api.reddit.com")
+my_data_fetcher.open('GET', 'http://api.reddit.com');
 ```
 
 The first argument to `open()` is the HTTP verb that we should use to connect
@@ -85,19 +87,19 @@ We use the exact same event-listening declaration to listen for success as you
 might intuit from your JavaScript DOM programming experience. Recall:
 
 ```js
-document.getElementById("razzle").addEventListener("click", () => {
-  alert("You've been razzled!");
-})
+document.getElementById('razzle').addEventListener('click', () => {
+	alert("You've been razzled!");
+});
 ```
 
 Similarly, we use `addEventListener` on our instance of the XHR class. For
 example:
 
 ```js
-my_data_fetcher.addEventListener("load", e => {
-  console.log(`load finished event: ${e}`); // The "load" event is 'e'
-  console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
-})
+my_data_fetcher.addEventListener('load', e => {
+	console.log(`load finished event: ${e}`); // The "load" event is 'e'
+	console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
+});
 ```
 
 The callback, the function that's the second argument to `addEventListener()`,
@@ -105,7 +107,7 @@ takes a single argument: an instance of a `load` `Event` object . We can
 `console.log` it if we want to inspect it more. When the `load` event fires,
 the original XHR instance, `my_data_fetcher`, will have the server's response
 stored in its `.response` attribute. When we `console.log()` the `.response`
-property, we'll see a JSON representation of [reddit.com][]'s front page.
+property, we will see a JSON representation of [reddit.com][]'s front page.
 
 ## Configuring the Error Behavior for "error"
 
@@ -116,9 +118,9 @@ this, we listen for an "error" `Event`. To test your "error" callback, simply
 add some nonsense to the URL (e.g. `http://redditILovePoodles.com`).
 
 ```js
-my_data_fetcher.addEventListener("error", ev => {
-  console.error("bad things: ${ev}");
-})
+my_data_fetcher.addEventListener('error', ev => {
+	console.error('bad things: ${ev}');
+});
 ```
 
 ## Putting it All Together
@@ -129,25 +131,27 @@ can see how synchronous code will continue executing _while_ our buddy,
 `my_data_fetcher` is off talking to a remote computer on the internet.
 
 ```js
-console.log("I run first");
+console.log('I run first');
 
 let my_data_fetcher = new XMLHttpRequest();
-my_data_fetcher.open("GET", "http://api.reddit.com")
+my_data_fetcher.open('GET', 'http://api.reddit.com');
 
-my_data_fetcher.addEventListener("load", e => {
-  console.log("On a good day, I run third and the 'error' callback doesn't run!");
-  console.log(`load finished event: ${e}`); // The "load" event is 'e'
-  console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
+my_data_fetcher.addEventListener('load', e => {
+	console.log(
+		"On a good day, I run third and the 'error' callback doesn't run!"
+	);
+	console.log(`load finished event: ${e}`); // The "load" event is 'e'
+	console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
 });
 
-my_data_fetcher.addEventListener("error", ev => {
-  console.log("On a bad day, I run third and the 'load' callback doesn't run!");
-  console.error("bad things: ${ev}");
+my_data_fetcher.addEventListener('error', ev => {
+	console.log("On a bad day, I run third and the 'load' callback doesn't run!");
+	console.error('bad things: ${ev}');
 });
 
-my_data_fetcher.send()
+my_data_fetcher.send();
 
-console.log("I run second!");
+console.log('I run second!');
 ```
 
 A slightly more interesting `load` callback might do something like
@@ -155,46 +159,47 @@ A slightly more interesting `load` callback might do something like
 ```js
 /* Write the top 3 posts' authors name in the browser */
 
-(e) => {
-  // Parse the returned JSON into an actual JavaScript Object
-  JSON.parse(my_data_fetcher.response)
-    .data // Look up its `data` key
-    .children // Look up that result's `children` key
-    .map( n => n.data.author) // Return each child's data.author property
-    .slice(0,3) // Take the first three names from the result array
-    .forEach( name => document.write(name)) // Write those names to the document
-}
+e => {
+	// Parse the returned JSON into an actual JavaScript Object
+	JSON.parse(my_data_fetcher.response)
+		.data // Look up its `data` key
+		.children // Look up that result's `children` key
+		.map(n => n.data.author) // Return each child's data.author property
+		.slice(0, 3) // Take the first three names from the result array
+		.forEach(name => document.write(name)); // Write those names to the document
+};
 ```
 
 Final product:
 
 ```js
-
-console.log("I run first");
+console.log('I run first');
 
 let my_data_fetcher = new XMLHttpRequest();
-my_data_fetcher.open("GET", "http://api.reddit.com")
+my_data_fetcher.open('GET', 'http://api.reddit.com');
 
-my_data_fetcher.addEventListener("load", e => {
-  console.log("On a good day, I run third and the 'error' callback doesn't run!");
-  console.log(`load finished event: ${e}`); // The "load" event is 'e'
-  console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
-  JSON.parse(my_data_fetcher.response)
-    .data // Look up its `data` key
-    .children // Look up that result's `children` key
-    .map( n => n.data.author) // Return each child's data.author property
-    .slice(0,3) // Take the first three names from the result array
-    .forEach( name => document.write(name)) // Write those names to the document
+my_data_fetcher.addEventListener('load', e => {
+	console.log(
+		"On a good day, I run third and the 'error' callback doesn't run!"
+	);
+	console.log(`load finished event: ${e}`); // The "load" event is 'e'
+	console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
+	JSON.parse(my_data_fetcher.response)
+		.data // Look up its `data` key
+		.children // Look up that result's `children` key
+		.map(n => n.data.author) // Return each child's data.author property
+		.slice(0, 3) // Take the first three names from the result array
+		.forEach(name => document.write(name)); // Write those names to the document
 });
 
-my_data_fetcher.addEventListener("error", ev => {
-  console.log("On a bad day, I run third and the 'load' callback doesn't run!");
-  console.error("bad things: ${ev}");
+my_data_fetcher.addEventListener('error', ev => {
+	console.log("On a bad day, I run third and the 'load' callback doesn't run!");
+	console.error('bad things: ${ev}');
 });
 
-my_data_fetcher.send()
+my_data_fetcher.send();
 
-console.log("I run second!");
+console.log('I run second!');
 ```
 
 This returns, in the console:
@@ -217,10 +222,9 @@ event-based programming were carried forward to support remote data retrieval.
 
 ## Resources
 
-* [Using XMLHttpRequest][1]
-* [XMLHttpRequest][2]
+- [Using XMLHttpRequest][1]
+- [XMLHttpRequest][2]
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
-
 [reddit.com]: http://reddit.com
