@@ -22,7 +22,6 @@ But in our day-to-day lives, we _love_ asynchrony.
   working: **asynchrony**
 - Send a text message and then browse social media until you get an alert saying
   that you have a response: **asynchrony**
-- Text while driving...no, never do that.
 
 Asynchrony is really just a programmer word for the idea of "multi-tasking."
 While the code might look a little bit strange, it should feel like a modest
