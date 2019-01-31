@@ -34,6 +34,8 @@ Your code assistant in making asynchronous calls to remote servers for data is
 > _ASIDE_: It can retrieve other things besides XML. These days, it mostly
 > retrieves JSON.
 
+**Note:** If you would like to follow along using the code snippets in this lesson, create a basic `index.html` file, open the file in Chrome, then open the [console][]. From here, you can paste in the JavaScript code provided.
+
 # Instantiate an XHR Instance
 
 To create a new helper, we're going to create a new _instance_ of the XHR
@@ -228,3 +230,4 @@ event-based programming were carried forward to support remote data retrieval.
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 [reddit.com]: http://reddit.com
+[console]: https://developers.google.com/web/tools/chrome-devtools/console/get-started
