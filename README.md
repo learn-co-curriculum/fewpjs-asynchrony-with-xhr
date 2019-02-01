@@ -37,7 +37,7 @@ Your code assistant in making asynchronous calls to remote servers for data is
 
 **Note:** If you would like to follow along using the code snippets in this lesson, create a basic `index.html` file, open the file in Chrome, then open the [console][]. From here, you can paste in the JavaScript code provided.
 
-# Instantiate an XHR Instance
+## Instantiate an XHR Instance
 
 To create a new helper, we're going to create a new _instance_ of the XHR
 _object_. We do this by invoking the `new` keyword on the name of the class.
