@@ -9,6 +9,8 @@
 - Configure a error handler on an XHR instance
 - Request remote data using a configured XHR instance
 
+## Introduction
+
 Asynchrony feels unusual when programming because we're so used to programming
 in languages that are synchronous: they run like they read, top down, left to
 right, maybe a loop here or there, down into a function, back out from the
