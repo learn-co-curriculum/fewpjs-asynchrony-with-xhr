@@ -14,7 +14,7 @@
 Asynchrony feels unusual when programming because we're so used to programming
 in languages that are synchronous: they run like they read, top down, left to
 right, maybe a loop here or there, down into a function, back out from the
-function, etc...
+function, etc....
 
 But in our day-to-day lives, we _love_ asynchrony.
 
