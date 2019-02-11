@@ -29,6 +29,11 @@ Asynchrony is really just a programmer word for the idea of "multi-tasking."
 While the code might look a little bit strange, it should feel like a modest
 stretch from your fundamentals in event-based JavaScript programming.
 
+For the moment, we're going to pretend like `fetch()` doesn't exist. While a
+great help, `fetch()` hides, or _abstracts away_ some of "what's really going on."
+We'll use more primitive tools so that we can ***really*** understand asynchrony
+in JavaScript.
+
 Your code assistant in making asynchronous calls to remote servers for data is
 (the long-named) `XMLHttpRequest`, or XHR object.
 
@@ -65,7 +70,7 @@ my_data_fetcher.open('GET', 'http://api.reddit.com');
 The first argument to `open()` is the HTTP verb that we should use to connect
 to the server. HTTP, the language of the web, recognizes multiple types of
 connections: `GET` means "I want to retrieve information;" POST means "I want
-to send you information." There are many HTTP verbs, but GET is the default and
+to send you information." There are many HTTP verbs, but `GET` is the default and
 is the verb that you use when you're "browsing the web."
 
 The second argument is the URL you want the XHR instance to go visit. Here we
@@ -80,7 +85,7 @@ should go."
 Before we trigger the real work by invoking `my_data_fetcher.send()`, we need
 to configure what `my_data_fetcher` should do when it gets information. To do
 this, we'll set up a "handler" for the case that our connection works
-flawlessly ("success") **as well as** in the case that things don't go _quite_
+flawlessly ("success") **as well as** for the case that things don't go _quite_
 right ("error"). XHR accomplishes this by having you set two event listeners
 &mdash; just like you know from doing DOM programming.
 
@@ -117,14 +122,15 @@ property, we will see a JSON representation of [reddit.com][]'s front page.
 Sometimes things don't go properly: the network is down, the remote server is
 misconfigured and can't answer our request, etc. To solve this, we need to be
 able to receive an `Event` that lets us know Bad Things have happened. To do
-this, we listen for an "error" `Event`. To test your "error" callback, simply
-add some nonsense to the URL (e.g. `http://redditILovePoodles.com`).
+this, we listen for an "error" `Event`.
 
 ```js
 my_data_fetcher.addEventListener('error', ev => {
 	console.error('bad things: ${ev}');
 });
 ```
+
+To test your "error" callback, simply add some nonsense to the URL (e.g. `http://redditILovePoodles.com`).
 
 ## Putting it All Together
 
@@ -222,6 +228,11 @@ asynchronously in JavaScript: the `XMLHttpRequest` object. While most
 developers use `fetch()` these days, it's not uncommon to be asked about XHR in
 job interview questions. Additionally, XHR shows how the ideas behind
 event-based programming were carried forward to support remote data retrieval.
+
+We're going to work with XHR so that we gain a sense of some of its pain points. By understanding
+these "rough edges," we'll appreciate why JavaScript added the `Promise` class to its 
+bag of tricks and how `Promise`s can be stitched together to creat the `fetch()` function
+we know and love.
 
 ## Resources
 
