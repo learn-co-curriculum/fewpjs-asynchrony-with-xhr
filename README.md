@@ -96,7 +96,7 @@ might intuit from your JavaScript DOM programming experience. Recall:
 
 ```js
 document.getElementById('razzle').addEventListener('click', () => {
-	alert("You've been razzled!");
+  alert("You've been razzled!");
 });
 ```
 
@@ -105,8 +105,8 @@ example:
 
 ```js
 my_data_fetcher.addEventListener('load', e => {
-	console.log(`load finished event: ${e}`); // The "load" event is 'e'
-	console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
+  console.log(`load finished event: ${e}`); // The "load" event is 'e'
+  console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
 });
 ```
 
@@ -126,7 +126,7 @@ this, we listen for an "error" `Event`.
 
 ```js
 my_data_fetcher.addEventListener('error', ev => {
-	console.error('bad things: ${ev}');
+  console.error('bad things: ${ev}');
 });
 ```
 
@@ -146,16 +146,16 @@ let my_data_fetcher = new XMLHttpRequest();
 my_data_fetcher.open('GET', 'http://api.reddit.com');
 
 my_data_fetcher.addEventListener('load', e => {
-	console.log(
-		"On a good day, I run third and the 'error' callback doesn't run!"
-	);
-	console.log(`load finished event: ${e}`); // The "load" event is 'e'
-	console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
+  console.log(
+    "On a good day, I run third and the 'error' callback doesn't run!"
+  );
+  console.log(`load finished event: ${e}`); // The "load" event is 'e'
+  console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
 });
 
 my_data_fetcher.addEventListener('error', ev => {
-	console.log("On a bad day, I run third and the 'load' callback doesn't run!");
-	console.error('bad things: ${ev}');
+  console.log("On a bad day, I run third and the 'load' callback doesn't run!");
+  console.error('bad things: ${ev}');
 });
 
 my_data_fetcher.send();
@@ -169,13 +169,13 @@ A slightly more interesting `load` callback might do something like
 /* Write the top 3 posts' authors name in the browser */
 
 e => {
-	// Parse the returned JSON into an actual JavaScript Object
-	JSON.parse(my_data_fetcher.response)
-		.data // Look up its `data` key
-		.children // Look up that result's `children` key
-		.map(n => n.data.author) // Return each child's data.author property
-		.slice(0, 3) // Take the first three names from the result array
-		.forEach(name => document.write(name)); // Write those names to the document
+  // Parse the returned JSON into an actual JavaScript Object
+  JSON.parse(my_data_fetcher.response)
+    .data // Look up its `data` key
+    .children // Look up that result's `children` key
+    .map(n => n.data.author) // Return each child's data.author property
+    .slice(0, 3) // Take the first three names from the result array
+    .forEach(name => document.write(name)); // Write those names to the document
 };
 ```
 
@@ -188,22 +188,22 @@ let my_data_fetcher = new XMLHttpRequest();
 my_data_fetcher.open('GET', 'http://api.reddit.com');
 
 my_data_fetcher.addEventListener('load', e => {
-	console.log(
-		"On a good day, I run third and the 'error' callback doesn't run!"
-	);
-	console.log(`load finished event: ${e}`); // The "load" event is 'e'
-	console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
-	JSON.parse(my_data_fetcher.response)
-		.data // Look up its `data` key
-		.children // Look up that result's `children` key
-		.map(n => n.data.author) // Return each child's data.author property
-		.slice(0, 3) // Take the first three names from the result array
-		.forEach(name => document.write(name)); // Write those names to the document
+  console.log(
+    "On a good day, I run third and the 'error' callback doesn't run!"
+  );
+  console.log(`load finished event: ${e}`); // The "load" event is 'e'
+  console.log(`Whole lotta JSON: ${my_data_fetcher.response}`); //JSON obj
+  JSON.parse(my_data_fetcher.response)
+    .data // Look up its `data` key
+    .children // Look up that result's `children` key
+    .map(n => n.data.author) // Return each child's data.author property
+    .slice(0, 3) // Take the first three names from the result array
+    .forEach(name => document.write(name)); // Write those names to the document
 });
 
 my_data_fetcher.addEventListener('error', ev => {
-	console.log("On a bad day, I run third and the 'load' callback doesn't run!");
-	console.error('bad things: ${ev}');
+  console.log("On a bad day, I run third and the 'load' callback doesn't run!");
+  console.error('bad things: ${ev}');
 });
 
 my_data_fetcher.send();
