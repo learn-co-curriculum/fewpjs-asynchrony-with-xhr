@@ -29,6 +29,8 @@ Asynchrony is really just a programmer word for the idea of "multi-tasking."
 While the code might look a little bit strange, it should feel like a modest
 stretch from your fundamentals in event-based JavaScript programming.
 
+![Diagram of an asyncronous task](https://curriculum-content.s3.amazonaws.com/fewpjs/asynchrony-with-xhr/Image_69_AsynchronousTask.png)
+
 For the moment, we're going to pretend like `fetch()` doesn't exist. While a
 great help, `fetch()` hides, or _abstracts away_ some of "what's really going on."
 We'll use more primitive tools so that we can ***really*** understand asynchrony
